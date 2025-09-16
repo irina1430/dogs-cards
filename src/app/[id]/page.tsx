@@ -17,7 +17,7 @@ export default function DogDetailPage() {
       <div className="p-6 rounded-lg shadow-md text-center border-gray-300 bg-[#F5F5F5] w-[500px]">
         <h1 className="text-3xl font-bold">{dog.name}</h1>
         <Image
-          src={dog.image}
+          src={dog.image || "/placeholder.jpg"}
           alt={dog.name}
           width={500}
           height={400}
