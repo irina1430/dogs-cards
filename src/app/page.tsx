@@ -11,7 +11,13 @@ export default function HomePage() {
   const [showFavorites, setShowFavorites] = useState(false);
 
   useEffect(() => {
-    fetchDogs().then(setDogs);
+    fetchDogs().then((apiDogs) => {
+      setDogs((prevDogs) => {
+        const existingIds = new Set(prevDogs.map((d) => d.id));
+        const newDogs = apiDogs.filter((d) => !existingIds.has(d.id));
+        return [...prevDogs, ...newDogs];
+      });
+    });
   }, [setDogs]);
 
   const filteredDogs = showFavorites ? dogs.filter((dog) => dog.liked) : dogs;
@@ -24,7 +30,7 @@ export default function HomePage() {
           variant="outline"
           onClick={() => setShowFavorites((prev) => !prev)}
         >
-          {showFavorites ? "Показать все" : "Показать избранное"}
+          {showFavorites ? "Show All" : "Show Favorites"}
         </Button>
       </div>
 

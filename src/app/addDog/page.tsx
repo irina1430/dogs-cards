@@ -37,7 +37,9 @@ export default function AddDogPage() {
   return (
     <Card className="max-w-xl mx-auto mt-6 shadow-md">
       <CardHeader>
-        <CardTitle>🐶 Add a new dog breed</CardTitle>
+        <CardTitle className="text-center text-2xl font-bold">
+          🐶 Add a new dog breed
+        </CardTitle>
       </CardHeader>
 
       <form onSubmit={handleSubmit}>
